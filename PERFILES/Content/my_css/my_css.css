@@ -1,0 +1,306 @@
+﻿body {
+}
+
+
+.titulo-principal {
+    color: white;
+    font-size: 2rem;
+}
+
+.homepage {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+}
+
+homepage-header {
+    font-size: 4rem;
+}
+
+.empleados-header {
+    margin-bottom: 1rem;
+}
+
+.opciones-usuario {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    /*border: 2px solid black;*/
+}
+
+.filtrado, #filter-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    /*width: 40vw;*/
+
+    /*border: 2px solid black;*/
+}
+
+.filtrar-text {
+    font-size: 1.5rem;
+    white-space: nowrap;
+    margin-right: 1rem;
+}
+
+.filtro-selector {
+    width: 10rem;
+    /*margin-left: -10rem;*/
+}
+
+.boton-filtrar {
+    margin-left: -1rem;
+}
+
+.boton-restablecer {
+    margin-left: 0.5rem;
+    white-space: nowrap;
+}
+
+table > tr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border: 2px solid black;*/
+}
+
+.primer-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*border: 2px solid black;*/
+}
+/*
+.filtro-num {
+    visibility: visible;
+}
+
+.filtro-texto {
+    visibility: hidden;
+}
+    */
+
+.rango-fechas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0.5rem;
+}
+
+.rango-fechas .guion {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.opciones-empleados {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-modificar, .header-registro {
+    margin-bottom: 1rem;
+}
+
+.regresar-listado {
+    margin-bottom: 1rem;
+}
+
+.formulario-registro, .formulario-modificacion {
+    display: flex;
+    flex-direction: column;
+    width: 40rem;
+    /*border: 2px solid black;*/
+}
+
+.labels-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 40rem;
+}
+
+.formulario-labels, .formulario-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 22rem;
+
+    /*border: 2px solid black;*/
+}
+
+.formulario-labels {
+    width: 15rem;
+}
+
+.formulario-inputs {
+    width: 25rem;
+}
+
+.formulario-labels {
+    padding-right: 2rem;
+}
+
+.seleccion-genero, .seleccion-departamento {
+    font-size: 1rem;
+}
+
+/*
+.formulario-inputs {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 22rem;
+}
+*/
+
+/*
+.id-empleado, .nombres, .dpi, .nacimiento, .genero, .ingreso, .edad, .direccion, .nit, .departamento {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.id-empleado {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+}
+
+.id-empleado, .nombres, .dpi, .nacimiento, .genero, .ingreso, .edad, .direccion, .nit, .departamento {
+    margin-bottom: 1rem;
+}
+
+.input-nombres, .input-direccion {
+    min-width: 20rem;
+}
+
+
+
+
+
+.fecha-nacimiento, .fecha-ingreso {
+    width: 10rem;
+}
+    */
+
+.boton-modificar, .boton-registrar {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 2rem;
+}
+
+.generar-reporte > a, .registrar-nuevo > a{
+    color: white;
+    text-decoration: none;
+}
+
+@media only screen and (max-width: 990px) {
+    .boton-filtrar {
+        margin-left: -5.6rem;
+    }
+
+    .boton-restablecer {
+        white-space: normal;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .boton-filtrar {
+        margin-left: 0.5rem;
+    }
+
+    .registrar-nuevo {
+        margin-left: 0.5rem;
+    }
+}
+
+#reporte-header {
+    margin-bottom: 1rem;
+}
+
+.filter-section {
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+#reporte-form {
+    display: flex;
+    flex-direction: row;
+}
+
+.filtro-labels-inputs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.filtro-labels {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-right: 1rem;
+}
+
+.filtro-fechas-dep {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: start;
+    margin-right: 1rem;
+    /*border: 2px solid black;*/
+}
+
+.seccion-fechas {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.filtro-labels > h3 {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.boton-actualizar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.actualizar-reporte {
+    width: 10rem;
+    height: 3rem;
+}
+/*
+.filtro-fechas {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+    */
+
+.pdfFile {
+    max-width: 100%;
+    max-height: 800px;
+}
+
+#pdfViewer {
+    width: 100%;
+    height: 800px;
+}

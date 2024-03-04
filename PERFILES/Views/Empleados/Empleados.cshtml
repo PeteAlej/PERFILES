@@ -1,0 +1,129 @@
+﻿@model List<PERFILES.Models.Empleados>
+@{
+    ViewBag.Title = "Empleados";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!--
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/my_css/my_css.css")" media="screen" />
+</head>
+-->
+
+<main>
+    <h1 class="empleados-header">
+        Listado de empleados
+    </h1>
+    <div class="opciones-usuario">
+        <div class="filtrado">
+            @using (Html.BeginForm("Filtrar", "Empleados", FormMethod.Post, new { id = "filter-form" }))
+            {
+                <h2 class="filtrar-text">Filtrar Por:</h2>
+                <select name="filtro-selector" id="filtro-selector" class="form-select form-select-sm filtro-selector">
+                    <option value="ID" selected>ID</option>
+                    <option value="Nombres">Nombres</option>
+                    <option value="DPI">DPI</option>
+                    <option value="Departamento">Departamento</option>
+                    <option value="Fecha de Ingreso">Fecha de Ingreso</option>
+                </select>
+                <div class="input-group" id="filtro-num">
+                    <input name="buscador-num" id="buscador-num" class="form-control-sm" type="number" placeholder="Busqueda" />
+                </div>
+                <div class="input-group" id="filtro-texto" hidden>
+                    <input name="buscador-texto" id="buscador-texto" class="form-control-sm" type="text" placeholder="Busqueda" />
+                </div>
+                <select name="filtro-departamento" id="filtro-departamento" class="form-select form-select-sm" hidden >
+                    <option value="Ventas" selected>Ventas</option>
+                    <option value="Recursos Humanos">Recursos Humanos</option>
+                    <option value="IT">IT</option>
+                    <option value="Legal">Legal</option>
+                </select>
+                <div class="rango-fechas" id="rango-fechas" hidden>
+                    <label for="fecha-inf" hidden></label>
+                    <div class="fecha-min" id="fecha-min">
+                        <input type="date" class="fecha-inf" name="fecha-inf" id="fecha-inf" />
+                    </div>
+                    <div class="guion">
+                        <b> - </b>
+                    </div>
+                    <label for="fecha-sup" hidden></label>
+                    <div class="fecha-max" id="fecha-max">
+                        <input type="date" class="fecha-sup" name="fecha-sup" id="fecha-sup" />
+                    </div>
+                </div>
+                <button name="boton-filtrar" type="submit" class="boton-filtrar btn btn-info">
+                    Filtrar
+                </button>
+            }
+            @using (Html.BeginForm("RestablecerFiltro", "Empleados", FormMethod.Post))
+            {
+                <button name="boton-restablecer" type="submit" class="boton-restablecer btn btn-warning">
+                    Restablecer busqueda
+                </button>
+            }
+        </div>
+
+        
+        <div class="funciones-adicionales">
+            <button class="btn btn-secondary registrar-nuevo">
+                @Html.ActionLink(linkText: "Registrar Nuevo Empleado", actionName: "Registrar", controllerName: "Empleados")
+            </button>
+            <button class="btn btn-success generar-reporte">
+                @Html.ActionLink(linkText: "Generar Reporte", actionName: "Reporte", controllerName: "Empleados")
+            </button>
+        </div>
+    </div>
+    
+    <table class="table" id="tabla-empleados">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombres</th>
+                <th>DPI</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Género</th>
+                <th>Fecha de Ingreso</th>
+                <th>Edad</th>
+                <th>Dirección</th>
+                <th>NIT</th>
+                <th>Departamento</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        @foreach (var empleado in Model)
+        {
+            <tr>
+                <td class="primer-item">@empleado.ID</td>
+                <td>@empleado.Nombres</td>
+                <td>@empleado.DPI</td>
+                <td>@empleado.FechaNacimiento.ToShortDateString()</td>
+                <td>@empleado.Genero</td>
+                <td>@empleado.FechaIngreso.ToShortDateString()</td>
+                <td>@empleado.Edad</td>
+                <td>@empleado.Direccion</td>
+                <td>@empleado.NIT</td>
+                <td>@empleado.Departamento</td>
+                <td>
+                    <div class="opciones-empleados">
+                        @using (Html.BeginForm("Modificar", "Empleados", FormMethod.Post))
+                        {
+                            <input type="hidden" name="id" id="label-@empleado.ID-@empleado.ID" for="modificar-@empleado.ID" value="@empleado.ID" />
+                            <button type="submit" name="modificar_@empleado.ID" id="modificar_@empleado.ID" class="btn btn-primary modificar">
+                                Modificar
+                            </button>
+                        }
+                        @using (Html.BeginForm("EliminarEmpleado", "Empleados", FormMethod.Post, new { onsubmit = "return confirm('Esta seguro que desea eliminar al empleado seleccionado?')" }))
+                        {
+                            //<label name="label-eliminar-@empleado.ID" id="label-eliminar-@empleado.ID" for="eliminar-@empleado.ID" hidden>@empleado.ID</label>
+                            <button type="submit" name="eliminar-@empleado.ID" id="eliminar-@empleado.ID" class="btn btn-danger eliminar">
+                                Eliminar
+                            </button>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+    </table>
+</main>
+

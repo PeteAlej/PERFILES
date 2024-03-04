@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "Registrar Empleado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <button class="btn btn-primary regresar-listado">
+        @Html.ActionLink(linkText: "Regresar a listado", actionName: "Empleados", controllerName: "Empleados", routeValues: new { area = "" }, htmlAttributes: new { @class = "nav-link" })
+    </button>
+    <h2 class="header-registro">Registrar Empleado Nuevo</h2>
+
+    <!--<form class="formulario-registro form-control" method="post"> -->
+    @using (Html.BeginForm("AgregarEmpleado", "Registrar", FormMethod.Post, new {onsubmit = "return confirm('Desea ingresar los datos de este nuevo empleado?')"}))
+    {
+    <div class="formulario-registro">
+        <div class="labels-inputs">
+            <div class="formulario-labels">
+                <label for="input-nombre">Nombre completo:</label>
+                <label for="input-dpi">DPI:</label>
+                <label for="fecha-nacimiento">Fecha de nacimiento:</label>
+                <label for="seleccion-genero">Género:</label>
+                <label for="fecha-ingreso">Fecha de ingreso:</label>
+                <label for="calculo-edad">Edad:</label>
+                <label for="input-direccion">Dirección:</label>
+                <label for="input-nit">NIT:</label>
+                <label for="seleccion-departamento">Departamento:</label>
+            </div>
+            <div class="formulario-inputs">
+                <input type="text" name="input-nombres" id="input-nombres" class="input-nombres input-group-sm" required />
+                <input type="number" name="input-dpi" id="input-dpi" class="input-dpi input-group-sm" required />
+                <input type="date" name="fecha-nacimiento" id="fecha-nacimiento" class="fecha-nacimiento input-group-sm" placeholder="dd/mm/yyyy" min="1950-01-01" required />
+                <select name="seleccion-genero" id="seleccion-genero" class="seleccion-genero form-select form-select-sm" aria-label="Default select example" required>
+                    <option selected></option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                </select>
+                <input type="date" name="fecha-ingreso" id="fecha-ingreso" class="fecha-ingreso input-group-sm" placeholder="dd/mm/yyyy" min="1950-01-01" required />
+                <input type="text" name="calculo-edad" id="calculo-edad" class="calculo-edad" input-group-sm" readonly />
+                <input type="text" name="input-direccion" id="input-direccion" class="input-direccion input-group-sm" />
+                <input type="number" name="input-nit" id="input-nit" class="input-nit input-group-sm" />
+                <select name="seleccion-departamento" id="seleccion-departamento" class="seleccion-departamento form-select form-select-sm" aria-label="Default select example" required>
+                    <option selected></option>
+                    <option value="Ventas">Ventas</option>
+                    <option value="Recursos Humanos">Recursos Humanos</option>
+                    <option value="IT">IT</option>
+                    <option value="Legal">Legal</option>
+                </select>
+            </div>
+        </div>
+        <div class="boton-registrar">
+            <button name="boton-post" class="btn btn-success" type="submit" value="Registrar">
+                Registrar
+            </button>
+        </div>
+
+        <!--
+
+    <div class="nombres">
+        <label for="input-nombre">Nombre completo:</label>
+        <input type="text" name="input-nombres" id="input-nombres" class="input-nombres input-group-sm" required />
+    </div>
+    <div class="dpi">
+        <label for="input-dpi">DPI:</label>
+        <input type="number" name="input-dpi" id="input-dpi" class="input-dpi input-group-sm" required />
+    </div>
+    <div class="nacimiento">
+        <label for="fecha-nacimiento">Fecha de nacimiento:</label>
+        <input type="date" name="fecha-nacimiento" id="fecha-nacimiento" class="fecha-nacimiento input-group-sm" placeholder="dd/mm/yyyy" min="1950-01-01" required />
+    </div>
+    <div class="genero">
+        <label for="seleccion-genero">Género:</label>
+        <select name="seleccion-genero" id="seleccion-genero" class="seleccion-genero form-select form-select-sm" aria-label="Default select example" required>
+            <option selected></option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+        </select>
+    </div>
+    <div class="ingreso">
+        <label for="fecha-ingreso">Fecha de ingreso:</label>
+        <input type="date" name="fecha-ingreso" id="fecha-ingreso" class="fecha-ingreso input-group-sm" placeholder="dd/mm/yyyy" min="1950-01-01" required />
+    </div>
+    <div class="edad">
+        <label for="calculo-edad">Edad:</label>
+        <input type="text" name="calculo-edad" id="calculo-edad" class="calculo-edad" input-group-sm" readonly />
+    </div>
+    <div class="direccion">
+        <label for="input-direccion">Dirección:</label>
+        <input type="text" name="input-direccion" id="input-direccion" class="input-direccion input-group-sm" />
+    </div>
+    <div class="nit">
+        <label for="input-nit">NIT:</label>
+        <input type="number" name="input-nit" id="input-nit" class="input-nit input-group-sm" />
+    </div>
+    <div class="departamento">
+        <label for="seleccion-departamento">Departamento:</label>
+        <select name="seleccion-departamento" id="seleccion-departamento" class="seleccion-departamento form-select form-select-sm" aria-label="Default select example" required>
+            <option selected></option>
+            <option value="Ventas">Ventas</option>
+            <option value="Recursos Humanos">Recursos Humanos</option>
+            <option value="IT">IT</option>
+            <option value="Legal">Legal</option>
+        </select>
+    </div>
+    <div class="boton-registrar">
+        <button name="boton-post" class="btn btn-success" type="submit" value="Registrar">
+            Registrar
+        </button>
+    </div>-->
+    </div>
+    }
+
+
+
+
+
+</main>
+
+<script>
+    /************* Cálculo automatico de edad ***************/
+
+    var birthdateInput = document.getElementById('fecha-nacimiento');
+
+    // Agregar EventListener para realizar calculo de edad.
+    birthdateInput.addEventListener('input', calculateAge);
+
+
+    function calculateAge() {
+        // Extraer fecha del input.
+        console.log("funcionando");
+        var birthdate = new Date(birthdateInput.value);
+        if (!birthdate.getTime()) {
+            return; // Exit function if birthdate is invalid
+        }
+
+        // Obtener fecha actual.
+        var currentDate = new Date();
+
+        //  Calculo de dia, mes, año.
+        var age = currentDate.getFullYear() - birthdate.getFullYear();
+        var monthDiff = currentDate.getMonth() - birthdate.getMonth();
+        if (monthDiff < 0 || (monthDiff === 0 && currentDate.getDate() < birthdate.getDate())) {
+            age--;
+        }
+
+        // Actualizar el input del bloque de edad. Este es readonly.
+        var ageInput = document.getElementById('calculo-edad');
+        ageInput.value = age;
+    }
+</script>
+
+<!--
+        public int ID { get; set; }
+        public string Nombres { get; set; }
+        public long DPI { get; set; }
+        public DateTime FechaNacimiento { get; set; }
+        public string Genero { get; set; }
+        public DateTime FechaIngreso { get; set; }
+        public int Edad { get; set; }
+        public string Direccion { get; set; }
+        public int NIT { get; set; }
+        public string Departamento { get; set; }
+    -->
